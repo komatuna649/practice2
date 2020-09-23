@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <meta name="description" content="site">
+</head>
+<body>
+    <h1>FizzBuzz問題</h1>
+    <p>FizzNum：<input type="text" name="fizz" id="fizz" placeholder="整数を入力してください"></p>
+    <p>BuzzNum：<input type="text" name="Buzz" id="buzz" placeholder="整数を入力してください"></p>
+    <p><input type="submit" value="実行" id="input"></p>
+    <p>[出力]</p>
+    <p id="result"></p>
+
+    <script>
+        'use strict'
+        let input = document.getElementById("input");
+        input.addEventListener("click", function () {
+            for (let i = 1; i <= 99; i++) {
+                let fizz = document.getElementById('fizz').value;
+                let buzz = document.getElementById('buzz').value;
+                //  エラーチェック
+                if (document.getElementById('fizz').value == "" || document.getElementById('buzz').value == "") {
+                    alert('空文字です');
+                    return false;
+                }
+                if (fizz.search(/^[0-9]+(\.  [1-9]+)?$/)) {
+                    alert(fizz.search(/^[0-9]+(\.[1-9]+)?$/) + '\n整数値で入力して下さい');
+                    return false;
+                }
+                if (buzz.search(/^[0-9]+(\.  [1-9]+)?$/)) {
+                    alert(buzz.search(/^[0-9]+(\.[1-9]+)?$/) + '\n整数値で入力して下さい');
+                    return false;
+                }
+                if (fizz.match(/[^0-9]/g)) {
+                    alert(fizz.match(/[^0-9]/g) + '\n半角数値で入力して下さい');
+                    return false;
+                }
+                if (buzz.match(/[^0-9]/g)) {
+                    alert(buzz.match(/[^0-9]/g) + '\n半角数値で入力して下さい');
+                    return false;
+                }
+                // 実行結果
+                const result = document.getElementById('result');
+                if (i % fizz === 0 && i % buzz === 0) {
+                    const fizzBuzz = document.createElement('p');
+                    fizzBuzz.innerHTML = 'FizzBuzz' + i;
+                    result.appendChild(fizzBuzz);
+                } else if (i % fizz === 0) {
+                    const fizz = document.createElement('p');
+                    fizz.innerHTML = 'Fizz' + i;
+                    result.appendChild(fizz);
+                } else if (i % buzz === 0) {
+                    const buzz = document.createElement('p');
+                    buzz.innerHTML = 'buzz' + i;
+                    result.appendChild(buzz);
+                }
+            }
+        });
+    </script>   
+</body>
+</html>
