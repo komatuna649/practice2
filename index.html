@@ -13,36 +13,52 @@
     <p>BuzzNum：<input type="text" name="Buzz" id="buzz" placeholder="整数を入力してください"></p>
     <p><input type="submit" value="実行" id="input"></p>
     <p>[出力]</p>
+    <p id="error"></p>
     <p id="result"></p>
 
     <script>
         'use strict'
-        let input = document.getElementById("input");
+        const input = document.getElementById("input");
         input.addEventListener("click", function () {
             for (let i = 1; i <= 99; i++) {
-                let fizz = document.getElementById('fizz').value;
-                let buzz = document.getElementById('buzz').value;
+                const fizz = document.getElementById('fizz').value;
+                const buzz = document.getElementById('buzz').value;
+                const error = document.getElementById('error');
                 //  エラーチェック
-                if (document.getElementById('fizz').value == "" || document.getElementById('buzz').value == "") {
-                    alert('空文字です');
-                    return false;
+                if (fizz == "" ||  buzz == "" ) {
+                const error_p = document.createElement('p');
+                error_p.innerHTML = '整数値を入力して下さい';
+                error.appendChild(error_p);
+                return false;
                 }
                 if (fizz.search(/^[0-9]+(\.  [1-9]+)?$/)) {
-                    alert(fizz.search(/^[0-9]+(\.[1-9]+)?$/) + '\n整数値で入力して下さい');
-                    return false;
+                const error_p = document.createElement('p');
+                error_p.innerHTML = '整数値を入力して下さい';
+                error.appendChild(error_p);
+                return false;
+                    // alert(fizz.search(/^[0-9]+(\.[1-9]+)?$/) + '\n整数値で入力して下さい');
                 }
                 if (buzz.search(/^[0-9]+(\.  [1-9]+)?$/)) {
-                    alert(buzz.search(/^[0-9]+(\.[1-9]+)?$/) + '\n整数値で入力して下さい');
-                    return false;
+                const error_p = document.createElement('p');
+                error_p.innerHTML = '整数値を入力して下さい';
+                error.appendChild(error_p);
+                return false;
+                    // alert(buzz.search(/^[0-9]+(\.[1-9]+)?$/) + '\n整数値で入力して下さい');
                 }
                 if (fizz.match(/[^0-9]/g)) {
-                    alert(fizz.match(/[^0-9]/g) + '\n半角数値で入力して下さい');
-                    return false;
+                const error_p = document.createElement('p');
+                error_p.innerHTML = '整数値を入力して下さい';
+                error.appendChild(error_p);
+                return false;
+                    // alert(fizz.match(/[^0-9]/g) + '\n半角数値で入力して下さい');
                 }
                 if (buzz.match(/[^0-9]/g)) {
-                    alert(buzz.match(/[^0-9]/g) + '\n半角数値で入力して下さい');
-                    return false;
-                }
+                const error_p = document.createElement('p');
+                error_p.innerHTML = '整数値を入力して下さい';
+                error.appendChild(error_p);
+                return false;
+                    // alert(buzz.match(/[^0-9]/g) + '\n半角数値で入力して下さい');
+                } 
                 // 実行結果
                 const result = document.getElementById('result');
                 if (i % fizz === 0 && i % buzz === 0) {
